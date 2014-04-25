@@ -36,7 +36,7 @@ return array(
 		'regex_newline'   => '\n',
 	),
 	'xml' => array(
-		'basenode' => 'response lang="vi" xml:lang="vi"',
+		'basenode' => 'response',
 		'use_cdata' => false,
 	),
 	'json' => array(

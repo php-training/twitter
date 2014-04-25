@@ -1388,3 +1388,33 @@ Caused by: java.lang.IllegalArgumentException: Index out of bounds
 	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
 	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
 	... 23 more
+
+!ENTRY org.eclipse.ui 4 4 2014-04-25 15:00:39.654
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@4cf12cb4} vs {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@6dae04e2}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-25 15:23:10.778
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@5057a3ef} vs {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@29cbc91e}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-25 15:24:32.496
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@2009cd0c} vs {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@6374df42}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-25 15:24:36.323
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@4cf12cb4} vs {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@6dae04e2}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-25 15:24:57.925
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@79b35c4} vs {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@5ee6dac2}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-25 15:25:22.116
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@c13364c} vs {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@4151bdc5}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-25 15:26:03.499
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@c13364c} vs {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@4151bdc5}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-25 15:26:08.938
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@c13364c} vs {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@4151bdc5}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-25 15:29:09.069
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@6e037952} vs {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@26122eeb}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-25 15:29:20.778
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@6e037952} vs {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@26122eeb}
