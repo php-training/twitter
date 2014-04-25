@@ -64,7 +64,7 @@
 			
 			$token=""; //null
 				
-			$val = Validation::forge('login_validation'); //validation
+			$val = Validation::forge('login_alidation'); //check the validation, if not set VALID_ERR
 				
 			$val -> add_field('email', 'Email', 'required|valid_email');
 			$val -> add_field('password','Password','required|min_length[3]|max_length[10]');
