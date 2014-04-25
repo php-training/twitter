@@ -49,7 +49,7 @@
 		 * the index action: for testing only
 		 */
 		public function action_index(){
-			echo "Hi! I'm the user API of iSociety. :)";
+			echo "Hi! I'm the user API of iSociety1. :)";
 		}
 		
 		/**
