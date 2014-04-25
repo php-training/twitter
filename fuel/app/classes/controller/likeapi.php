@@ -1,4 +1,6 @@
 <?php 
+use \Model\Likeapi;
+
 class Controller_Likeapi extends Controller_Rest
 /**
  * Fuel is a fast, lightweight, community driven PHP5 framework.
@@ -21,6 +23,36 @@ class Controller_Likeapi extends Controller_Rest
  * @extends  Controller
  */
 {
+
+	private $idmsg = '';
+	private $token = '';
 	
+	public function action_index()
+	{
+		if(Input::method() == 'POST')
+		{
+			//format
+			$this->format = 'xml';
+			$this->idmsg = Input::post('idmsg');
+			$this->token = Input::post('token');
+			
+			//validation
+			if(!empty($this->token))
+			{
+				$view =
+			} else {
+				return $this->response(
+					array(
+						'error' => array(
+							'status' 	=> '401',
+							'message' 	=> 'Please login before like this post',
+						)
+					)
+				);
+			}
+			
+			
+		}
+	}
 }
 ?>
