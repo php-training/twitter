@@ -44,7 +44,7 @@ class Followapi extends \Model
 			$arrs = $result->as_array();
 			$rows = count($arrs);
 			if($rows == 0){
-				return 2;
+				return 402;
 			}else{
 				return $arrs;
 			}

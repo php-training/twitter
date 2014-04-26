@@ -2,13 +2,25 @@
 use \Model\Followapi;
 class Controller_Followapi extends Controller_Rest
 {
-	
+	function write_xml( XMLWriter $xml, $data ) {
+		foreach( $data as $key => $value ) {
+			if( is_array( $value )) {
+				$xml->startElement( $key );
+				$this->write_xml( $xml, $value );
+				$xml->endElement( );
+				continue;
+			}
+			$xml->writeElement( $key, $value );
+		}
+	}
 	public function action_addfollow()
 	{
 		try{
 			
-			$token = Input::post('token');
-			$user_id_followed = Input::post('user_id_followed');
+			//$token = Input::post('token');
+			//$user_id_followed = Input::post('user_id_followed');
+			$token = 'abce';
+			$user_id_followed = 1;
 			//search token
 			$arr = Followapi::searchToken($token);
 			if($arr == 500){
@@ -63,9 +75,18 @@ class Controller_Followapi extends Controller_Rest
 			$data = array(
 						'status'=> $status, 
 						'message' => $message);
-			$xml = new SimpleXMLElement('<root/>');
-			array_walk_recursive($data, array ($xml, 'addChild'));
-			print $xml->asXML();			
+			//$info['status'] = $status;
+			//$info['message'] = $message;
+			$info['error'] = array( 'status' => $status , 'message' => $message );
+			$xml = new XmlWriter();
+			$xml->openMemory();
+			$xml->startDocument( '1.0', 'utf-8' );
+			$xml->startElement( 'response') ;
+			 
+			$this->write_xml( $xml, $info );
+			 
+			$xml->endElement();
+			echo $xml->outputMemory( true );		
 		}catch (\Exception $e) {
 		  echo $e->getMessage();
 		}
