@@ -9,16 +9,9 @@ class Followapi extends \Model
 		try{
 			$query = DB::query("select u.id from users u, login_token l where u.id = l.iduser and l.token = '" . $token . "'",DB::SELECT);
 			$result = $query->execute();
-			$arrs = $result->as_array();
-			//var_dump($arrs); exit;
-			/*$errors = array_filter($errors);
-
-			if (!empty($errors)) {
-			}*/
-			
-			if(count($arrs) == 0)
-			{
-				
+			$arrs = $result->as_array();			
+			$rows = count($arrs);
+			if($rows == 0){
 				return 403;
 			}else{
 				return $arrs;
