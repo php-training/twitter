@@ -117,40 +117,43 @@ class Controller_Followapi extends Controller_Rest
 			if($token == ""){
 				$status = 401;
 				$message = "Invalid Argument";
+				$info['error'] = array( 'status' => $status , 'message' => $message );
 			}else{
 				//search token
 				$arr = Followapi::searchToken($token);
 				if($arr == 500){
 					$status = 500;
 					$message = "Internal Server Error";
+					$info['error'] = array( 'status' => $status , 'message' => $message );
 				}else if($arr == 403){
 					$status = 403;
 					$message = "Not Existed Token";
+					$info['error'] = array( 'status' => $status , 'message' => $message );
 				}else{
-					$user_id = $arr[0]['id'];					
+					$user_id = $arr[0]['id'];
+										
 					$arr1 = Followapi::viewFollowing($user_id);
 					if($arr1 == 500){
 						$status = 500;
 						$message = "Internal Server Error";
+						$info['error'] = array( 'status' => $status , 'message' => $message );
 					}else if($arr1 == 402){
 						$status = 402;
 						$message = "Not Existed User";
+						$info['error'] = array( 'status' => $status , 'message' => $message );
 					}else{
 						$status = 200;
 						$message = "Normal";
+						$info['error'] = array( 'status' 	=> $status,
+										'message' 	=> $message
+										);				
+						foreach($arr1 as $key => $value ){
+							$info['users']['user' . $key] = $value;
+						}
 					}
 				}
 			}		
-			if($arr1 == 402){
-				$info['error'] = array( 'status' => $status , 'message' => $message );
-			}else{
-				$info['error'] = array( 'status' 	=> $status,
-										'message' 	=> $message
-										);				
-				foreach($arr1 as $key => $value ){
-					$info['users']['user' . $key] = $value;
-				}
-			}
+			
 			$xml = new XmlWriter();
 			$xml->openMemory();
 			$xml->startDocument( '1.0', 'utf-8' );
@@ -173,41 +176,45 @@ class Controller_Followapi extends Controller_Rest
 			if($token == ""){
 				$status = 401;
 				$message = "Invalid Argument";
+				$info['error'] = array( 'status' => $status , 'message' => $message );
 			}else{
 				//search token
 				$arr = Followapi::searchToken($token);
+				
 				if($arr == 500){
 					$status = 500;
 					$message = "Internal Server Error";
-				}else if($arr == 403){
+					$info['error'] = array( 'status' => $status , 'message' => $message );
+				}else if($arr == 403){					
 					$status = 403;
 					$message = "Not Existed Token";
+					$info['error'] = array( 'status' => $status , 'message' => $message );
 				}else{
+					
 					$user_id = $arr[0]['id'];					
 					$arr1 = Followapi::viewFollowed($user_id);
 					if($arr1 == 500){
 						$status = 500;
 						$message = "Internal Server Error";
+						$info['error'] = array( 'status' => $status , 'message' => $message );
 					}else if($arr1 == 402){
 						$status = 402;
 						$message = "Not Existed User";
+						$info['error'] = array( 'status' => $status , 'message' => $message );
 					}else{
 						$status = 200;
 						$message = "Normal";
-					}
-				}
-			}		
-			if($arr1 == 402){
-				$info['error'] = array( 'status' => $status , 'message' => $message );
-			}else{
-				$info['error'] = array( 'status' 	=> $status,
+						$info['error'] = array( 'status' 	=> $status,
 										'message' 	=> $message
 										);				
-				foreach($arr1 as $key => $value ){
-					$info['users']['user' . $key] = $value;
+						foreach($arr1 as $key => $value ){
+							$info['users']['user' . $key] = $value;
+						}
+					}
+					
 				}
-				
-			}
+			}		
+			
 			$xml = new XmlWriter();
 			$xml->openMemory();
 			$xml->startDocument( '1.0', 'utf-8' );
