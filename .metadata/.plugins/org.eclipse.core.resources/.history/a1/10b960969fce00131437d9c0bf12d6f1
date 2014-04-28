@@ -167,21 +167,21 @@
 				$pwd      = md5(Input :: post('password')); 	//get the post variable first
 						
 				try{
-					$num_user=count(Model_User :: find('all', array(
+					$numuser=count(Model_User :: find('all', array(
 							'where' => array(
 									array('email',$email))
 					)));
-					if ($num_user>0) //validate paramenter, 401
+					if ($numuser>0) //validate paramenter, 401
 					{
 						$error_code = self :: STATUS_EXST_ACC_ERR;
 						$msg        = self :: MSG_EXST_ACC_ERR;
 					}
 						
 					else{	//then create a user model to insert into database
-						$new_user             = new Model_User(); 	//insert into databaseateime
-						$new_user -> email    = 	$email;
-						$new_user -> password = 	$pwd;
-						$new_user -> save();
+						$newuser             = new Model_User(); 	//insert into databaseateime
+						$newuser -> email    = 	$email;
+						$newuser -> password = 	$pwd;
+						$newuser -> save();
 									
 					}
 				}
