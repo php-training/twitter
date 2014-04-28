@@ -6,7 +6,7 @@ class Likeapi extends \Model
 {
 	public static function checkToken($token='')
 	{
-		$sql = DB::select('*')-> from('login_token')-> where('token', $token)-> and_where('due_date', '<=', 'NOW()');
+		$sql = DB::select('*')-> from('login_token')-> where('token', $token)-> and_where('due_date', '>=', 'NOW()');
 		$result = $sql->execute();
 		
 		return $result;
