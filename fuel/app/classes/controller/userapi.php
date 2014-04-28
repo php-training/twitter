@@ -46,6 +46,19 @@
 		const MSG_NEXST_TOKEN_ERR  = "NOT EXISTED TOKEN"; //token is not existed. (expired)
 		
 		/**
+		 * Supporting function
+		 * for API
+		 * printXML function
+		 * input: array
+		 * output: print out the array in XML format
+		 */
+		private function printXML ($result) { //array
+			
+			print_r(Format :: forge($result) -> to_xml());
+		}
+		
+		
+		/**
 		 * the index action: for testing only
 		 */
 		public function action_index(){
@@ -64,7 +77,7 @@
 			
 			$token=""; //null
 				
-			$val = Validation::forge('login_validation'); //validation
+			$val = Validation::forge('login_validation'); //initialize for validation
 				
 			$val -> add_field('email', 'Email', 'required|valid_email');
 			$val -> add_field('password','Password','required|min_length[3]|max_length[10]');
@@ -113,7 +126,7 @@
 			
 			
 			$result = array("error" => array("status" => $error_code,"message" => $msg),"token" => $token); //print result in XML format
-			print_r(Format :: forge($result) -> to_xml());
+			$this -> printXML($result);
 
 		}
 		
@@ -134,9 +147,7 @@
 		 */
 		public function action_signup(){
 			
-			//echo "Hi! I'm signing up an account for you.";
-		
-
+		//	echo "Hi! I'm signing up an account for you.";
 			$error_code = self :: STATUS_OK;
 			$msg        = self :: MSG_OK; 
 
@@ -162,19 +173,15 @@
 					)));
 					if ($numuser>0) //validate paramenter, 401
 					{
-							$error_code = self :: STATUS_EXST_ACC_ERR;
-							$msg        = self :: MSG_EXST_ACC_ERR;
+						$error_code = self :: STATUS_EXST_ACC_ERR;
+						$msg        = self :: MSG_EXST_ACC_ERR;
 					}
-							//then create a user model to insert into database
-					else{
-									
-							$newuser             = new Model_User();
-							//sync data
-							$newuser -> email    = 	$email;
-							$newuser -> password = 	$pwd;
-							$newuser -> created_at = time();
-							//insert into databaseateime
-							$newuser -> save();
+						
+					else{	//then create a user model to insert into database
+						$newuser             = new Model_User(); 	//insert into databaseateime
+						$newuser -> email    = 	$email;
+						$newuser -> password = 	$pwd;
+						$newuser -> save();
 									
 					}
 				}
@@ -186,7 +193,7 @@
 				}	
 			}
 			$result = array("error" => array("status" => $error_code,"message" => $msg)); //print result in XML format
-			print_r(Format :: forge($result) -> to_xml());
+			$this -> printXML($result);
 			
 		}
 		
@@ -238,10 +245,10 @@
 			} 
 			
 			$result = array ("error" => array ("status" => $error_code, "message" => $msg));
-			print_r(Format :: forge ($result) -> to_xml()); //print the result in xml
+			$this -> printXML($result);
 		}
 		
-		/**
+		/** future developement
 		 * the changepassword api
 		 * input: reset_token and the new password via POST
 		 * output: the status of the API in XML format
@@ -250,7 +257,7 @@
 			
 		}
 		
-		/**
+		/** future development
 		 * the activate user api
 		 * input: activate_token
 		 * output: the status of the API in XML format
