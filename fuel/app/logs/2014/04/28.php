@@ -90,3 +90,35 @@ WARNING - 2014-04-28 15:37:17 --> Fuel\Core\Fuel::init - The configured locale e
 WARNING - 2014-04-28 15:38:17 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2014-04-28 15:38:19 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 >>>>>>> FETCH_HEAD
+WARNING - 2014-04-28 22:33:50 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 22:34:56 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 22:35:13 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 22:35:34 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 22:36:27 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 22:37:14 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 22:37:14 --> Fatal Error - Call to undefined function Model\NOW() in C:\xampp\htdocs\twitter\fuel\app\classes\model\likeapi.php on line 11
+WARNING - 2014-04-28 22:37:42 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 22:37:48 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 22:37:49 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 22:42:57 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 22:42:57 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 'idmessage' in 'field list' with query: "SELECT `idmessage` FROM `post` WHERE `id` = '1'" in C:\xampp\htdocs\twitter\fuel\core\classes\database\pdo\connection.php on line 234
+WARNING - 2014-04-28 22:44:11 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 22:44:11 --> Notice - Undefined index: id in C:\xampp\htdocs\twitter\fuel\app\classes\controller\likeapi.php on line 54
+WARNING - 2014-04-28 22:45:00 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 22:45:00 --> Notice - Array to string conversion in C:\xampp\htdocs\twitter\fuel\app\classes\controller\likeapi.php on line 49
+WARNING - 2014-04-28 22:45:02 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 22:45:02 --> Notice - Array to string conversion in C:\xampp\htdocs\twitter\fuel\app\classes\controller\likeapi.php on line 49
+WARNING - 2014-04-28 22:49:28 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 22:49:28 --> Notice - Array to string conversion in C:\xampp\htdocs\twitter\fuel\app\classes\controller\likeapi.php on line 48
+WARNING - 2014-04-28 22:50:08 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 22:50:08 --> Notice - Undefined index: id in C:\xampp\htdocs\twitter\fuel\app\classes\controller\likeapi.php on line 54
+WARNING - 2014-04-28 22:54:12 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 22:54:12 --> Notice - Undefined index: id in C:\xampp\htdocs\twitter\fuel\app\classes\controller\likeapi.php on line 57
+WARNING - 2014-04-28 22:56:07 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 22:56:07 --> Fatal Error - Call to a member function current() on a non-object in C:\xampp\htdocs\twitter\fuel\app\classes\controller\likeapi.php on line 49
+WARNING - 2014-04-28 22:57:28 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 22:58:04 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 22:58:04 --> Notice - Undefined index: id in C:\xampp\htdocs\twitter\fuel\app\classes\controller\likeapi.php on line 76
+WARNING - 2014-04-28 22:58:22 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 22:58:39 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 22:58:41 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
