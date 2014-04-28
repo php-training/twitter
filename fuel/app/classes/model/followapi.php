@@ -7,7 +7,7 @@ class Followapi extends \Model
 	
 	public static function searchToken($token){
 		try{
-			$query = DB::query("select u.id from users u, login_token l where u.id = l.iduser and l.token = '" . $token . "'",DB::SELECT);
+			$query = DB::query("select iduser from login_token where due_date >= now() and token = '" . $token . "'", DB::SELECT);
 			$result = $query->execute();
 			$arrs = $result->as_array();			
 			$rows = count($arrs);
@@ -77,7 +77,7 @@ class Followapi extends \Model
 	}
 	public static function viewFollowing($user_id){
 		try{
-			$query = DB::query("select u.id, u.email from users u, follow f where u.id = f.user_id_follow and  f.user_id_followed =  " . $user_id, DB::SELECT);
+			$query = DB::query("select u.id, u.email, f.status from users u, follow f where u.id = f.user_id_follow and  f.user_id_followed =  " . $user_id, DB::SELECT);
 			$result = $query->execute();
 			$arrs = $result->as_array();					
 			$rows = count($arrs);
@@ -92,7 +92,7 @@ class Followapi extends \Model
 	}
 	public static function viewFollowed($user_id){
 		try{
-			$query = DB::query("select u.id, u.email from users u, follow f where u.id = f.user_id_followed and  f.user_id_follow =  " . $user_id, DB::SELECT);
+			$query = DB::query("select u.id, u.email, f.status from users u, follow f where u.id = f.user_id_followed and  f.user_id_follow =  " . $user_id, DB::SELECT);
 			$result = $query->execute();
 			$arrs = $result->as_array();
 			
