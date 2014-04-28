@@ -80,7 +80,7 @@
 			$val = Validation::forge('login_validation'); //initialize for validation
 				
 			$val -> add_field('email', 'Email', 'required|valid_email');
-			$val -> add_field('password','Password','required|min_length[3]|max_length[10]|valid_string[alpha,numeric,dashes,punctuation]');
+			$val -> add_field('password','Password','required|min_length[3]|max_length[10]');
 			
 			if (!$val -> run()){ //failed, VALID_ERR
 				$error_code = self :: STATUS_INVALID_ERR;
@@ -154,7 +154,7 @@
 			$val = Validation::forge('signup_alidation'); //check the validation, if not set VALID_ERR
 			
 			$val -> add_field('email', 'Email', 'required|valid_email');
-			$val -> add_field('password','Password','required|min_length[3]|max_length[10]|valid_string[alpha,numeric,dashes,punctuation]');
+			$val -> add_field('password','Password','required|min_length[3]|max_length[10]');
 			
 			if (!$val->run()){
 				$error_code = self :: STATUS_INVALID_ERR; // invalid parameter

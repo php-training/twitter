@@ -2065,3 +2065,9 @@ java.lang.UnsupportedClassVersionError: com/google/appengine/tools/admin/AdminEx
 
 !ENTRY org.eclipse.ui 4 4 2014-04-28 11:03:42.701
 !MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@5034037e} vs {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@6d16e55}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-28 11:34:46.812
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@5034037e} vs {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@6d16e55}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-28 11:34:51.945
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@49422757} vs {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@1624e654}
