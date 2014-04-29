@@ -23,17 +23,17 @@ class Controller_Followapi extends Controller_Rest
  */
 {
 	//set const status and message of Error
-	const _status_ok = 200;
-	const _status_db_error = 500;
-	const _status_invalid = 401;
-	const _status_not_exist_user = 402;
-	const _status_not_exist_token = 403;	
+	const _STATUS_OK = 200;
+	const _STATUS_DB_ERROR = 500;
+	const _STATUS_INVALID = 401;
+	const _STATUS_NOT_EXIST_USER = 402;
+	const _STATUS_NOT_EXIST_TOKEN = 403;	
 	
-	const _message_ok = "";
-	const _message_db_error = "Internal Server Error";
-	const _message_invalid = "Invalid Argument";
-	const _message_not_exist_user = "Not Existed User";
-	const _message_not_exist_token = "Not Existed Token";
+	const _MESSAGE_OK = "";
+	const _MESSAGE_DB_ERROR = "Internal Server Error";
+	const _MESSAGE_INVALID = "Invalid Argument";
+	const _MESSAGE_NOT_EXIST_USER = "Not Existed User";
+	const _MESSAGE_NOT_EXIST_TOKEN = "Not Existed Token";
 	
 	/** Add follow or unfollow of user. 
 	 * Input: $token and $user_id_followed.
@@ -53,17 +53,17 @@ class Controller_Followapi extends Controller_Rest
 			$val->add('token')->add_rule('required');
 			$val->add('user_id_followed')->add_rule('required')->add_rule('valid_string', array('numeric'));						
 			if(!$val->run(array('token' => $token)) || !$val->run(array('user_id_followed' => $user_id_followed))){				
-				$status = self :: _status_invalid;
-				$message = self :: _message_invalid;
+				$status = self :: _STATUS_INVALID;
+				$message = self :: _MESSAGE_INVALID;
 			}else{
 				//search token
 				$arr = Followapi::searchToken($token);
-				if($arr == self :: _status_db_error){
-					$status = self :: _status_db_error;
-					$message = self :: _message_db_error;
-				}else if($arr == self :: _status_not_exist_token){
-					$status = self :: _status_not_exist_token;
-					$message = self :: _message_not_exist_token;
+				if($arr == self :: _STATUS_DB_ERROR){
+					$status = self :: _STATUS_DB_ERROR;
+					$message = self :: _MESSAGE_DB_ERROR;
+				}else if($arr == self :: _STATUS_NOT_EXIST_TOKEN){
+					$status = self :: _STATUS_NOT_EXIST_TOKEN;
+					$message = self :: _MESSAGE_NOT_EXIST_TOKEN;
 				}else{
 					$user_id_follow = $arr[0]['iduser'];
 					
@@ -71,45 +71,45 @@ class Controller_Followapi extends Controller_Rest
 					$arr1 = Followapi::searchUser($user_id_followed);
 					
 					if($user_id_follow == $user_id_followed){//if user is follow and user is followed is one
-						$arr1 = self :: _status_invalid;
+						$arr1 = self :: _STATUS_INVALID;
 					}
-					if($arr1 == self :: _status_invalid){
-						$status = self :: _status_invalid;
-						$message = self :: _message_invalid;
-					}else if($arr1 == self :: _status_db_error){
-						$status = self :: _status_db_error;
-						$message = self :: _message_db_error;
-					}else if($arr1 == self :: _status_not_exist_user){
-						$status = self :: _status_not_exist_user;
-						$message = self :: _message_not_exist_user;
+					if($arr1 == self :: _STATUS_INVALID){
+						$status = self :: _STATUS_INVALID;
+						$message = self :: _MESSAGE_INVALID;
+					}else if($arr1 == self :: _STATUS_DB_ERROR){
+						$status = self :: _STATUS_DB_ERROR;
+						$message = self :: _MESSAGE_DB_ERROR;
+					}else if($arr1 == self :: _STATUS_NOT_EXIST_USER){
+						$status = self :: _STATUS_NOT_EXIST_USER;
+						$message = self :: _MESSAGE_NOT_EXIST_USER;
 					}else{
 						//check exist follow in table follow
 						$arr2 = Followapi::isExistFollow($user_id_follow, $user_id_followed);
 						
 						$current_status = $arr2[0]['status'];
-						if($arr2 == self :: _status_db_error){
-							$status = self :: _status_db_error;
-							$message = self :: _message_db_error;
-						}else if($arr2 == self :: _status_not_exist_user){//if not exist follow
+						if($arr2 == self :: _STATUS_DB_ERROR){
+							$status = self :: _STATUS_DB_ERROR;
+							$message = self :: _MESSAGE_DB_ERROR;
+						}else if($arr2 == self :: _STATUS_NOT_EXIST_USER){//if not exist follow
 							//insert into table follow						
 							$follow_status = '1';
 							$arr4 = Followapi::insertFollow($user_id_follow, $user_id_followed, $follow_status);
-							if($arr4 == self :: _status_db_error){
-								$status = self :: _status_db_error;
-								$message = self :: _message_db_error;
+							if($arr4 == self :: _STATUS_DB_ERROR){
+								$status = self :: _STATUS_DB_ERROR;
+								$message = self :: _MESSAGE_DB_ERROR;
 							}else{
-								$status = self :: _status_ok;
-								$message = self :: _message_ok;
+								$status = self :: _STATUS_OK;
+								$message = self :: _MESSAGE_OK;
 							}
 						}else{//if exist follow
 							//update follow with other status						
 							$arr3 = Followapi::updateFollow($user_id_follow, $user_id_followed, $current_status);
-							if($arr3 == self :: _status_db_error){
-								$status = self :: _status_db_error;
-								$message = self :: _message_db_error;
+							if($arr3 == self :: _STATUS_DB_ERROR){
+								$status = self :: _STATUS_DB_ERROR;
+								$message = self :: _MESSAGE_DB_ERROR;
 							}else{
-								$status = self :: _status_ok;
-								$message = self :: _message_ok;
+								$status = self :: _STATUS_OK;
+								$message = self :: _MESSAGE_OK;
 							}
 						}
 					}
@@ -135,30 +135,30 @@ class Controller_Followapi extends Controller_Rest
 			//value is requried
             $val->add('token')->add_rule('required');
 			if(!$val->run(array('token'=>$token))){
-				$status = self :: _status_invalid;
-				$message = self :: _message_invalid;
+				$status = self :: _STATUS_INVALID;
+				$message = self :: _MESSAGE_INVALID;
 			}else{
 				//search token
 				$arr = Followapi::searchToken($token);
-				if($arr == self :: _status_db_error){
-					$status = self :: _status_db_error;
-					$message = self :: _message_db_error;
-				}else if($arr == self :: _status_not_exist_token){
-					$status = self :: _status_not_exist_token;
-					$message = self :: _message_not_exist_token;
+				if($arr == self :: _STATUS_DB_ERROR){
+					$status = self :: _STATUS_DB_ERROR;
+					$message = self :: _MESSAGE_DB_ERROR;
+				}else if($arr == self :: _STATUS_NOT_EXIST_TOKEN){
+					$status = self :: _STATUS_NOT_EXIST_TOKEN;
+					$message = self :: _MESSAGE_NOT_EXIST_TOKEN;
 				}else{
 					$user_id = $arr[0]['iduser'];
 										
 					$arr1 = Followapi::viewFollowing($user_id);
-					if($arr1 == self :: _status_db_error){
-						$status = self :: _status_db_error;
-						$message = self :: _message_db_error;
-					}else if($arr1 == self :: _status_not_exist_user){
-						$status = self :: _status_not_exist_user;
-						$message = self :: _message_not_exist_user;						
+					if($arr1 == self :: _STATUS_DB_ERROR){
+						$status = self :: _STATUS_DB_ERROR;
+						$message = self :: _MESSAGE_DB_ERROR;
+					}else if($arr1 == self :: _STATUS_NOT_EXIST_USER){
+						$status = self :: _STATUS_NOT_EXIST_USER;
+						$message = self :: _MESSAGE_NOT_EXIST_USER;						
 					}else{
-						$status = self :: _status_ok;
-						$message = self :: _message_ok;
+						$status = self :: _STATUS_OK;
+						$message = self :: _MESSAGE_OK;
 						foreach($arr1 as $key => $value ){
 							if($value['status'] == 1)
 								$arr1[$key]['status'] = 'follow';
@@ -176,7 +176,7 @@ class Controller_Followapi extends Controller_Rest
 			}		
 					
 			
-			if($status == self :: _status_ok){
+			if($status == self :: _STATUS_OK){
 				$result = $result1;
 			}else{
 				$result = array(
@@ -206,31 +206,31 @@ class Controller_Followapi extends Controller_Rest
 			//value is requried
             $val->add('token')->add_rule('required');
 			if(!$val->run(array('token'=>$token))){
-				$status = self :: _status_invalid;
-				$message = self :: _message_invalid;
+				$status = self :: _STATUS_INVALID;
+				$message = self :: _MESSAGE_INVALID;
 			}else{
 				//search token
 				$arr = Followapi::searchToken($token);
 				
-				if($arr == self :: _status_db_error){
-					$status = self :: _status_db_error;
-					$message = self :: _message_db_error;
-				}else if($arr == self :: _status_not_exist_token){					
-					$status = self :: _status_not_exist_token;
-					$message = self :: _message_not_exist_token;
+				if($arr == self :: _STATUS_DB_ERROR){
+					$status = self :: _STATUS_DB_ERROR;
+					$message = self :: _MESSAGE_DB_ERROR;
+				}else if($arr == self :: _STATUS_NOT_EXIST_TOKEN){					
+					$status = self :: _STATUS_NOT_EXIST_TOKEN;
+					$message = self :: _MESSAGE_NOT_EXIST_TOKEN;
 				}else{
 					
 					$user_id = $arr[0]['iduser'];					
 					$arr1 = Followapi::viewFollowed($user_id);
-					if($arr1 == self :: _status_db_error){
-						$status = self :: _status_db_error;
-						$message = self :: _message_db_error;
-					}else if($arr1 == self :: _status_not_exist_user){
-						$status = self :: _status_not_exist_user;
-						$message = self :: _message_not_exist_user;						
+					if($arr1 == self :: _STATUS_DB_ERROR){
+						$status = self :: _STATUS_DB_ERROR;
+						$message = self :: _MESSAGE_DB_ERROR;
+					}else if($arr1 == self :: _STATUS_NOT_EXIST_USER){
+						$status = self :: _STATUS_NOT_EXIST_USER;
+						$message = self :: _MESSAGE_NOT_EXIST_USER;						
 					}else{
-						$status = self :: _status_ok;
-						$message = self :: _message_ok;
+						$status = self :: _STATUS_OK;
+						$message = self :: _MESSAGE_OK;
 						foreach($arr1 as $key => $value ){
 							if($value['status'] == 1)
 								$arr1[$key]['status'] = 'follow';
@@ -248,7 +248,7 @@ class Controller_Followapi extends Controller_Rest
 			}		
 					
 			
-			if($status == self :: _status_ok){
+			if($status == self :: _STATUS_OK){
 				$result = $result1;
 			}else{
 				$result = array(
