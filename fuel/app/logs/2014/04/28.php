@@ -275,3 +275,4 @@ WARNING - 2014-04-28 16:31:13 --> Fuel\Core\Fuel::init - The configured locale e
 ERROR - 2014-04-28 15:13:53 --> Warning - move_uploaded_file(upload/nhung-gi-da-qua-em-se-de-danh-suot-doi.jpg): failed to open stream: No such file or directory in /Users/van.phung267/htdocs/aaa/twitter/fuel/app/classes/controller/post.php on line 284
 ERROR - 2014-04-28 15:15:00 --> Warning - move_uploaded_file(upload/nhung-gi-da-qua-em-se-de-danh-suot-doi.jpg): failed to open stream: No such file or directory in /Users/van.phung267/htdocs/aaa/twitter/fuel/app/classes/controller/post.php on line 284
 
+WARNING - 2014-04-28 23:24:52 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.

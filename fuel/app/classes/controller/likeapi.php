@@ -32,13 +32,16 @@ class Controller_Likeapi extends Controller_Rest
 	{
 		if(Input::method() == 'POST')
 		{
+			//validation
+			$val = Validation::forge();
 			//format
 			$this->format = 'xml';
 			$this->idmsg = Input::post('idmsg');
 			$this->token = Input::post('token');
-
+			
+			
 			//validation
-			if(!empty($this->token))
+			if(!empty($this->token) && is_numeric($this->idmsg))
 			{
 				$user = Likeapi::checkToken($this->token);
 
