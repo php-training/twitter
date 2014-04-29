@@ -1,20 +1,116 @@
 <?php
-class Controller_Post extends Controller
+use \Model\Post;
+
+class Controller_Post extends Controller_Rest
 {
 
 	//const variables
-	const $STATUS_SUCCESS = 200;
-	const $STATUS_VALID_ERR = 401;
-	const $STATUS_NOT_EXST_ACC = 402;
-	const $STATUS_NOT_EXST_POST = 403;
-	const $STATUS_DB_ERR = 500;
+	const STATUS_SUCCESS = 200;
+	const STATUS_VALID_ERR = 401;
+	const STATUS_NOT_EXST_ACC = 402;
+	const STATUS_NOT_EXST_POST = 403;
+	const STATUS_DB_ERR = 500;
+	
+	//variables
+	private $content = "";
+	private $image_url = "";
+	private $token = "";
+	private $delete_status = "";
 	
 	public function action_index()
 	{
-                echo"d";
+        if(Input::method() == "POST")
+		{
+			//format config
+			$this->format = 'xml';
+			
+			$this->content = Input::post('content');
+			$this->image_url = Input::post('image_url');
+			$this->token = Input::post('token');
+			$this->delete_status = 0;
+			
+			//search token from table login_token
+			if(!empty($this->token))
+			{
+				$user = Post::checkToken($this->token);
+
+				//check token to get iduser
+				if(count($user) > 0)
+				{
+					//upload image
+					//Custom configuration for this upload
+					$config = array(
+						'path' => DOCROOT . 'assets\uploads',
+						'randomize' => true,
+						'ext_whitelist' => array('img', 'jpg', 'jpeg', 'gif', 'png'),
+					);
+					
+					// process the uploaded files in $_FILES
+					Upload::process($config);
+					
+					// if there are any valid files
+					if (Upload::is_valid())
+					{
+						//save images base on the config 
+						Upload::save();
+						
+						$value = Upload::get_files(0);
+						$this->image_url = $value['saved_as'];
+					}
+					
+					$data = array(
+						'content' => $this->content,
+						'image_url' => $this->image_url,
+						'id_user' => $user['iduser'],
+						'delete_status' => $this->delete_status
+					);
+					
+					//insert post
+					if(Post::insert($data))
+					{
+						return $this->response(
+							array(
+								'error' => array(
+									'status' 	=> self::STATUS_SUCCESS,
+									'message' 	=> '',
+								)
+							)
+						);
+					} else {
+						return $this->response(
+							array(
+								'error' => array(
+									'status' 	=> self::STATUS_DB_ERR,
+									'message' 	=> 'Database Error',
+								)
+							)
+						);
+					}
+					
+				} else {
+					return $this->response(
+						array(
+							'error' => array(
+								'status' 	=> self::STATUS_NOT_EXST_ACC,
+								'message' 	=> 'Please login before like this post',
+							)
+						)
+					);
+				}
+			} else {
+				return $this->response(
+					array(
+						'error' => array(
+							'status' 	=> self::STATUS_NOT_EXST_ACC,
+							'message' 	=> 'Please login before like this post',
+						)
+					)
+				);
+			}
+		}
 	}
     
-	public function action_create()
+	/* public function action_create()
 	{
 	
 	}
@@ -285,7 +381,7 @@ class Controller_Post extends Controller
 			print_r(Format :: forge ($result) -> to_xml()); //print the result in xml
                 }
 
-
+ */
 
 
 
