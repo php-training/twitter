@@ -39,7 +39,7 @@
 		/**
 		 * ERROR MESSAGE 
 		 */
-		const MSG_OK               = ""; //succeeded
+		const MSG_OK               = " "; //succeeded
 		const MSG_DB_ERR           = "DATABASE ERROR"; //database error
 		const MSG_INVALID_ERR      = "INVALID ARGUMENT"; //invalid argument
 		const MSG_EXST_ACC_ERR     = "EXISTED ACCOUNT"; //acc is existed

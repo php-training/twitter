@@ -2695,3 +2695,12 @@ Binding(ALT+COMMAND+H,
 
 !ENTRY org.eclipse.ui 4 4 2014-04-29 10:01:57.706
 !MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@4bf58247} vs {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@633c2a46}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-29 10:13:27.495
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@266cca78} vs {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@30609ffd}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-29 10:16:03.040
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@266cca78} vs {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@30609ffd}
+
+!ENTRY org.eclipse.ui 4 4 2014-04-29 10:16:34.895
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.toggle.comment: {org.eclipse.wst.sse.ui.internal.handlers.ToggleLineCommentHandler@4bf58247} vs {org.eclipse.php.internal.ui.actions.PHPToggleLineCommentHandler@633c2a46}
