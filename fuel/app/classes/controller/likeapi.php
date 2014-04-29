@@ -26,39 +26,44 @@ class Controller_Likeapi extends Controller_Rest
 
 	private $idmsg = '';
 	private $token = '';
+	const STATUS_DB_ERROR = '500';
+	const STATUS_SUCCESS = '200';
+	const STATUS_VALID_ERROR = '401';
 	
 	public function action_index()
 	{
 		if(Input::method() == 'POST')
 		{
+			//validation
+			$val = Validation::forge();
 			//format
 			$this->format = 'xml';
 			$this->idmsg = Input::post('idmsg');
 			$this->token = Input::post('token');
-
+			
+			
 			//validation
-			if(!empty($this->token))
+			if(!empty($this->token) && is_numeric($this->idmsg))
 			{
+				$user = Likeapi::checkToken($this->token);
 
-				$view = Likeapi::checkToken($this->token);
 				//check token
-				if(count($view->current()) > 0)
+				if(count($user) > 0)
 				{
-					$user = $view->current();
 					//check post
 					$post = Likeapi::checkPost($this->idmsg);
 					if(count($post->current()) > 0)
 					{
-						$like = Likeapi::checkLike($this->idmsg, $user['id']);
+						$like = Likeapi::checkLike($this->idmsg, $user['iduser']);
 						if(count($like->current()) > 0)
 						{
-							if(Likeapi::deleteLike($this->idmsg, $user['id']))
+							if(Likeapi::deleteLike($this->idmsg, $user['iduser']))
 							{
 								return $this->response(
 									array(
 										'error' => array(
-											'status' 	=> '200',
-											'message' 	=> 'Delete Successfully',
+											'status' 	=> self::STATUS_SUCCESS,
+											'message' 	=> '',
 										)
 									)
 								);
@@ -66,20 +71,20 @@ class Controller_Likeapi extends Controller_Rest
 								return $this->response(
 									array(
 										'error' => array(
-											'status' 	=> '500',
+											'status' 	=> self::STATUS_DB_ERROR,
 											'message' 	=> 'Database Error',
 										)
 									)
 								);
 							}
 						} else {
-							if(Likeapi::insertLike($this->idmsg, $user['id']))
+							if(Likeapi::insertLike($this->idmsg, $user['iduser']))
 							{
 								return $this->response(
 									array(
 										'error' => array(
-											'status' 	=> '200',
-											'message' 	=> 'Insert Successfully',
+											'status' 	=> self::STATUS_SUCCESS,
+											'message' 	=> '',
 										)
 									)
 								);
@@ -87,7 +92,7 @@ class Controller_Likeapi extends Controller_Rest
 								return $this->response(
 									array(
 										'error' => array(
-											'status' 	=> '500',
+											'status' 	=> self::STATUS_DB_ERROR,
 											'message' 	=> 'Database Error',
 										)
 									)
@@ -98,7 +103,7 @@ class Controller_Likeapi extends Controller_Rest
 						return $this->response(
 							array(
 								'error' => array(
-									'status' 	=> '401',
+									'status' 	=> self::STATUS_VALID_ERROR,
 									'message' 	=> 'This post does not exist',
 								)
 							)
@@ -108,7 +113,7 @@ class Controller_Likeapi extends Controller_Rest
 					return $this->response(
 						array(
 							'error' => array(
-								'status' 	=> '401',
+								'status' 	=> self::STATUS_VALID_ERROR,
 								'message' 	=> 'Please login before like this post',
 							)
 						)
@@ -118,7 +123,7 @@ class Controller_Likeapi extends Controller_Rest
 				return $this->response(
 					array(
 						'error' => array(
-							'status' 	=> '401',
+							'status' 	=> self::STATUS_VALID_ERROR,
 							'message' 	=> 'Please login before like this post',
 						)
 					)
