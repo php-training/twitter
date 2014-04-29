@@ -5,6 +5,7 @@
 	 * All right reserved.
 	 * This is the controller of the API for login, signup and reissue password for iSociety (Twitter like system)
 	 * For Mulodo Vietnam PHP Training - April 2014
+	 * final version. :)
 	 */
 
 	/**
@@ -38,7 +39,7 @@
 		/**
 		 * ERROR MESSAGE 
 		 */
-		const MSG_OK               = ""; //succeeded
+		const MSG_OK               = " "; //succeeded
 		const MSG_DB_ERR           = "DATABASE ERROR"; //database error
 		const MSG_INVALID_ERR      = "INVALID ARGUMENT"; //invalid argument
 		const MSG_EXST_ACC_ERR     = "EXISTED ACCOUNT"; //acc is existed

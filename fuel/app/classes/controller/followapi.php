@@ -14,18 +14,6 @@ class Controller_Followapi extends Controller_Rest
 	const _message_not_exist_user = "Not Existed User";
 	const _message_not_exist_token = "Not Existed Token";
 	
-	//function convert array to xml
-	function write_xml( XMLWriter $xml, $data ) {
-		foreach( $data as $key => $value ) {
-			if( is_array( $value )) {
-				$xml->startElement( $key );
-				$this->write_xml( $xml, $value );
-				$xml->endElement( );
-				continue;
-			}
-			$xml->writeElement( $key, $value );
-		}
-	}
 	public function action_addfollow()
 	{
 		try{			
@@ -143,21 +131,35 @@ class Controller_Followapi extends Controller_Rest
 					}else{
 						$status = self :: _status_ok;
 						$message = self :: _message_ok;
-						$info['error'] = array( 'status' => $status , 'message' => $message );				
 						foreach($arr1 as $key => $value ){
-							$info['users']['user' . $key] = $value;
-							if($value['status'] == 1){
-								$info['users']['user' . $key]['status'] = 'follow';
-							}else{
-								$info['users']['user' . $key]['status'] = 'unfollow';
-							}
-							
+							if($value['status'] == 1)
+								$arr1[$key]['status'] = 'follow';
+							else 
+								$arr1[$key]['status'] = 'unfollow';
 						}
+						$result1 = array(
+											'error' => array(
+													'status' 	=> $status,
+													'message' 	=> $message,
+											), 'users' => $arr1,
+										); 
 					}
 				}
 			}		
-			$info['error'] = array( 'status' => $status , 'message' => $message );			
-			echo Format :: forge ($info) -> to_xml();	
+					
+			
+			if($status == self :: _status_ok){
+				$result = $result1;
+			}else{
+				$result = array(
+							'error' => array(
+										'status' 	=> $status,
+										'message' 	=> $message,
+										)
+							);
+			}	
+			 
+			echo(Format :: forge($result) -> to_xml());
 		}catch (\Exception $e) {
 		  echo $e->getMessage();
 		}
@@ -197,21 +199,35 @@ class Controller_Followapi extends Controller_Rest
 					}else{
 						$status = self :: _status_ok;
 						$message = self :: _message_ok;
-						$info['error'] = array( 'status' => $status , 'message' => $message );			
 						foreach($arr1 as $key => $value ){
-							$info['users']['user' . $key] = $value;
-							if($value['status'] == 1){
-								$info['users']['user'. $key]['status'] = 'follow';
-							}else{
-								$info['users']['user'. $key]['status'] = 'unfollow';
-							}
+							if($value['status'] == 1)
+								$arr1[$key]['status'] = 'follow';
+							else 
+								$arr1[$key]['status'] = 'unfollow';
 						}
+						$result1 = array(
+											'error' => array(
+													'status' 	=> $status,
+													'message' 	=> $message,
+											), 'users' => $arr1,
+										); 
 					}
-					
 				}
 			}		
-			$info['error'] = array( 'status' => $status , 'message' => $message );
-			echo Format :: forge ($info) -> to_xml();		
+					
+			
+			if($status == self :: _status_ok){
+				$result = $result1;
+			}else{
+				$result = array(
+							'error' => array(
+										'status' 	=> $status,
+										'message' 	=> $message,
+										)
+							);
+			}	
+			 
+			echo(Format :: forge($result) -> to_xml());		
 		}catch (\Exception $e) {
 		  echo $e->getMessage();
 		}
