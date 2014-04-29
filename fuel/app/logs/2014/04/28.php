@@ -274,5 +274,34 @@ WARNING - 2014-04-28 16:31:13 --> Fuel\Core\Fuel::init - The configured locale e
 
 ERROR - 2014-04-28 15:13:53 --> Warning - move_uploaded_file(upload/nhung-gi-da-qua-em-se-de-danh-suot-doi.jpg): failed to open stream: No such file or directory in /Users/van.phung267/htdocs/aaa/twitter/fuel/app/classes/controller/post.php on line 284
 ERROR - 2014-04-28 15:15:00 --> Warning - move_uploaded_file(upload/nhung-gi-da-qua-em-se-de-danh-suot-doi.jpg): failed to open stream: No such file or directory in /Users/van.phung267/htdocs/aaa/twitter/fuel/app/classes/controller/post.php on line 284
+<<<<<<< HEAD
+>>>>>>> bc5208c0002c93a9775cfab3a409fc407eda4147
+WARNING - 2014-04-28 17:00:43 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:00:46 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:00:47 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:00:49 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:00:50 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:00:51 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:00:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:00:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:01:52 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:02:04 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:02:22 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:30:20 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 17:30:21 --> Fatal Error - Call to undefined method Fuel\Core\Validation::factory() in D:\xampp\htdocs\twitter\fuel\app\classes\controller\followapi.php on line 114
+WARNING - 2014-04-28 17:30:41 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 17:30:41 --> Fatal Error - Call to undefined method Fuel\Core\Validation::factory() in D:\xampp\htdocs\twitter\fuel\app\classes\controller\followapi.php on line 114
+WARNING - 2014-04-28 17:31:10 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:31:26 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:32:22 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:33:07 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:34:22 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:35:25 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:35:31 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:35:40 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2014-04-28 17:45:18 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2014-04-28 17:45:18 --> Parsing Error - syntax error, unexpected 'catch' (T_CATCH) in D:\xampp\htdocs\twitter\fuel\app\classes\controller\followapi.php on line 109
+=======
 
 WARNING - 2014-04-28 23:24:52 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+>>>>>>> b378f5a8685aa13ef0ede60a372eaabc63bd88ba
