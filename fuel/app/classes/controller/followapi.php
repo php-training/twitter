@@ -35,7 +35,10 @@ class Controller_Followapi extends Controller_Rest
 	const _message_not_exist_user = "Not Existed User";
 	const _message_not_exist_token = "Not Existed Token";
 	
-	//Add follow or unfollow of user. Input: token and user_id_followed. Output: Error($status, $message)
+	/** Add follow or unfollow of user. 
+	 * Input: $token and $user_id_followed.
+	 * Output: Error($status, $message)
+	 */ 
 	public function action_addfollow()
 	{
 		try{			
@@ -118,7 +121,10 @@ class Controller_Followapi extends Controller_Rest
 		  echo $e->getMessage();
 		}		
 	}
-	//view following users list. Input: token. Output: error($status, $message) and following users list
+	/** View following users list.  
+	 * Input: $token.
+	 * Output: error($status, $message) and following users list.
+	 */
 	public function action_viewfollowing(){
 		try{
 			$token = Input::post('token');				
@@ -186,7 +192,10 @@ class Controller_Followapi extends Controller_Rest
 		  echo $e->getMessage();
 		}
 	}
-	//view followed users list. Input: token. Output: error($status, $message) and followed users list
+	/** View followed users list. 
+	 * Input: $token. 
+	 * Output: error($status, $message) and followed users list 
+	 */
 	public function action_viewfollowed(){
 		try{
 			$token = Input::post('token');				
