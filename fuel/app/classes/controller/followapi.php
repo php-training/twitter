@@ -28,15 +28,18 @@ class Controller_Followapi extends Controller_Rest
 	}
 	public function action_addfollow()
 	{
-		try{
-			$val = Validation::forge();
+		try{			
 			$token = Input::post('token');
 			$user_id_followed = Input::post('user_id_followed');			
 			//delete white space
 			$token = trim($token) ;
 			$user_id_followed = trim($user_id_followed);
 			//check invalid value
-			if($token == "" || $user_id_followed == "" || !is_numeric($user_id_followed)){
+			$val = Validation::forge();
+			//value is requried and $user_id_followed is numeric
+			$val->add('token')->add_rule('required');
+			$val->add('user_id_followed')->add_rule('required')->add_rule('valid_string', array('numeric'));						
+			if(!$val->run(array('token' => $token)) || !$val->run(array('user_id_followed' => $user_id_followed))){				
 				$status = self :: _status_invalid;
 				$message = self :: _message_invalid;
 			}else{
@@ -110,9 +113,12 @@ class Controller_Followapi extends Controller_Rest
 		try{
 			$token = Input::post('token');				
 			//delete white space
-			$token = trim($token) ;			
+			$token = trim($token);						
 			//check invalid value
-			if($token == ""){
+			$val = Validation::forge();
+			//value is requried
+            $val->add('token')->add_rule('required');
+			if(!$val->run(array('token'=>$token))){
 				$status = self :: _status_invalid;
 				$message = self :: _message_invalid;
 			}else{
@@ -158,13 +164,14 @@ class Controller_Followapi extends Controller_Rest
 	}
 	public function action_viewfollowed(){
 		try{
-			$token = Input::post('token');
-				
+			$token = Input::post('token');				
 			//delete white space
-			$token = trim($token) ;
-			
+			$token = trim($token) ;						
 			//check invalid value
-			if($token == ""){
+			$val = Validation::forge();
+			//value is requried
+            $val->add('token')->add_rule('required');
+			if(!$val->run(array('token'=>$token))){
 				$status = self :: _status_invalid;
 				$message = self :: _message_invalid;
 			}else{
