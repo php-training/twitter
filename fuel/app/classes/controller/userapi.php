@@ -5,6 +5,7 @@
 	 * All right reserved.
 	 * This is the controller of the API for login, signup and reissue password for iSociety (Twitter like system)
 	 * For Mulodo Vietnam PHP Training - April 2014
+	 * final version. :)
 	 */
 
 	/**
