@@ -36,7 +36,7 @@ return array(
 	|	Default: xml
 	|
 	*/
-	'xml_basenode' => 'xml',
+	'xml_basenode' => 'response',
 
 	/*
 	| Name for the password protected REST API displayed on login dialogs
