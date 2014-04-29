@@ -1,7 +1,28 @@
 <?php
 use \Model\Followapi;
 class Controller_Followapi extends Controller_Rest
+/**
+ * Fuel is a fast, lightweight, community driven PHP5 framework.
+ *
+ * @package    Fuel
+ * @version    1.7
+ * @author     PHP-Training Team
+ * @license    MIT License
+ * @copyright  duong.tram@mulodo.com
+ * @link       http://fuelphp.com
+ */
+ 
+/**
+ * The FollowAPI Controller.
+ *
+ * A basic controller example.  Has examples of how to set the
+ * response body and status.
+ *
+ * @package  app
+ * @extends  Controller
+ */
 {
+	//set const status and message of Error
 	const _status_ok = 200;
 	const _status_db_error = 500;
 	const _status_invalid = 401;
@@ -14,6 +35,7 @@ class Controller_Followapi extends Controller_Rest
 	const _message_not_exist_user = "Not Existed User";
 	const _message_not_exist_token = "Not Existed Token";
 	
+	//Add follow or unfollow of user. Input: token and user_id_followed. Output: Error($status, $message)
 	public function action_addfollow()
 	{
 		try{			
@@ -94,9 +116,9 @@ class Controller_Followapi extends Controller_Rest
 			echo Format :: forge ($info) -> to_xml();	
 		}catch (\Exception $e) {
 		  echo $e->getMessage();
-		}
-		
+		}		
 	}
+	//view following users list. Input: token. Output: error($status, $message) and following users list
 	public function action_viewfollowing(){
 		try{
 			$token = Input::post('token');				
@@ -164,6 +186,7 @@ class Controller_Followapi extends Controller_Rest
 		  echo $e->getMessage();
 		}
 	}
+	//view followed users list. Input: token. Output: error($status, $message) and followed users list
 	public function action_viewfollowed(){
 		try{
 			$token = Input::post('token');				

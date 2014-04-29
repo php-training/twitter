@@ -4,7 +4,9 @@ use \DB;
 
 class Followapi extends \Model
 {
-	
+	//search token to get iduser. 
+	//Input: token. 
+	//Output: iduser of token if exist in login_token table. 403: not exist. 500: data error 
 	public static function searchToken($token){
 		try{
 			$query = DB::query("select iduser from login_token where due_date >= now() and token = '" . $token . "'", DB::SELECT);
@@ -21,6 +23,9 @@ class Followapi extends \Model
 		}
 	
 	}
+	//check user exist in users table. 
+	//Input: iduser. 
+	//Output: iduser if exist in users table. 402: not exist. 500: data error
 	public static function searchUser($iduser){
 		try{
 			$query = DB::query("select id from users where id =  " . $iduser,DB::SELECT);
@@ -37,6 +42,9 @@ class Followapi extends \Model
 		}
 	
 	}
+	//check follow exist in follow table
+	//Input: user_id_follow, user_id_followed
+	//Output: id, status of folllow table if exist. 402: not exist. 500: datat error
 	public static function isExistFollow($user_id_follow, $user_id_followed){
 		try{
 			$query = DB::query("select id, status from follow where user_id_follow =". $user_id_follow . " and user_id_followed = " . $user_id_followed,DB::SELECT);
@@ -52,6 +60,9 @@ class Followapi extends \Model
 			return 500;		  		  
 		}
 	}
+	//insert follow into follow table
+	//Input: user_id_follow, user_id_followed, status
+	//Output: 1:success, 500: unsuccess
 	public static function insertFollow($user_id_follow, $user_id_followed, $status){
 		try{
 			$query = DB::query("insert into follow(user_id_follow, user_id_followed, status) values(" . $user_id_follow . ", " . $user_id_followed . ", " . $status . ")",DB::INSERT);			
@@ -61,6 +72,9 @@ class Followapi extends \Model
 			return 500;		  		  
 		}
 	}
+	//update status follow in follow table
+	//Input: user_id_follow, user_id_followed, currentstatus: status is now
+	//Output: 1: success, 500: data error
 	public static function updateFollow($user_id_follow, $user_id_followed, $currentStatus){
 		try{
 			if($currentStatus == 1){
@@ -75,6 +89,9 @@ class Followapi extends \Model
 			return 500;		  		  
 		}
 	}
+	//get following users list
+	//Input: user_id
+	//Output: list of users following user_id. 402: not exist. 500 : data error
 	public static function viewFollowing($user_id){
 		try{
 			$query = DB::query("select u.id, u.email, f.status from users u, follow f where u.id = f.user_id_follow and  f.user_id_followed =  " . $user_id, DB::SELECT);
@@ -90,6 +107,9 @@ class Followapi extends \Model
 			return 500;		  		  
 		}
 	}
+	//get followed users list
+	//Input: user_id
+	//Output: list of users followed by user_id if exist. 402: not exist. 500 : data error
 	public static function viewFollowed($user_id){
 		try{
 			$query = DB::query("select u.id, u.email, f.status from users u, follow f where u.id = f.user_id_followed and  f.user_id_follow =  " . $user_id, DB::SELECT);
