@@ -27,6 +27,8 @@ class Controller_Likeapi extends Controller_Rest
 	private $idmsg = '';
 	private $token = '';
 	const STATUS_DB_ERROR = '500';
+	const STATUS_SUCCESS = '200';
+	const STATUS_VALID_ERROR = '401';
 	
 	public function action_index()
 	{
@@ -60,7 +62,7 @@ class Controller_Likeapi extends Controller_Rest
 								return $this->response(
 									array(
 										'error' => array(
-											'status' 	=> '200',
+											'status' 	=> self::STATUS_SUCCESS,
 											'message' 	=> '',
 										)
 									)
@@ -81,7 +83,7 @@ class Controller_Likeapi extends Controller_Rest
 								return $this->response(
 									array(
 										'error' => array(
-											'status' 	=> '200',
+											'status' 	=> self::STATUS_SUCCESS,
 											'message' 	=> '',
 										)
 									)
@@ -101,7 +103,7 @@ class Controller_Likeapi extends Controller_Rest
 						return $this->response(
 							array(
 								'error' => array(
-									'status' 	=> '401',
+									'status' 	=> self::STATUS_VALID_ERROR,
 									'message' 	=> 'This post does not exist',
 								)
 							)
@@ -111,7 +113,7 @@ class Controller_Likeapi extends Controller_Rest
 					return $this->response(
 						array(
 							'error' => array(
-								'status' 	=> '401',
+								'status' 	=> self::STATUS_VALID_ERROR,
 								'message' 	=> 'Please login before like this post',
 							)
 						)
@@ -121,7 +123,7 @@ class Controller_Likeapi extends Controller_Rest
 				return $this->response(
 					array(
 						'error' => array(
-							'status' 	=> '401',
+							'status' 	=> self::STATUS_VALID_ERROR,
 							'message' 	=> 'Please login before like this post',
 						)
 					)

@@ -1,68 +1,23 @@
 <?php
-class Controller_Post extends Controller{
-                protected $OK         = 200;
-		protected $DB_ERR     = 500;
-		protected $VALID_ERR  = 401;
-		protected $NOT_EXST_ACC   = 402;
-                protected $NOT_EXST_POST   = 403;
+class Controller_Post extends Controller
+{
 
+	//const variables
+	const $STATUS_SUCCESS = 200;
+	const $STATUS_VALID_ERR = 401;
+	const $STATUS_NOT_EXST_ACC = 402;
+	const $STATUS_NOT_EXST_POST = 403;
+	const $STATUS_DB_ERR = 500;
+	
 	public function action_index()
 	{
                 echo"d";
 	}
-        
-//        public function action_create(){
-//            
-//            $error_code = $this -> OK; 
-//            
-//            $val = Validation::forge('create_alidation');
-//
-//            if (!$val->run()){
-//				$error_code = $this -> STATUS_VALID_ERR; // invalid parameter
-//			}
-//                        
-//                        else{ //ok
-//				
-//				$content   = Input :: post('content');
-//				$token = Input :: post ('token');
-//                                //get the post variable first
-//                                try{
-//					echo "def";
-//                                        $sql = DB::select('iduser')-> from('login_token')-> where('token', $token);
-//                                        $entry = $sql -> execute();
-//                                       // return $entry;
-//					
-//					if (!count($entry)>0) { //token is not existed
-//						$error_code = $this -> STATUS_EXST_ACC;
-//                                                //echo "van";
-//					}
-//					else { 
-//                                            foreach ($entry as $user)
-//					
-//                                            {
-//								$newpost  =new Model_Post();
-//								//sync data
-//								$newpost -> content= $content;
-//								$newpost -> id_user =$user;
-//                                                                $newpost->delete_status=0;
-//								//insert into database
-//								$newpost -> save();
-//									
-//							}
-//				}
-//                                }
-//                                catch (Database_Exception $dbe){
-//					echo "hfsdh";
-//					$error_code = $this -> STATUS_DB_ERR;
-//				}	
-//			}
-//			
-//			
-//			$result = array("error" => array("status" => $error_code,"message" => "")); //print result in XML format
-//			print_r(Format :: forge($result) -> to_xml());
-//			
-//		}
-//                
+    
+	public function action_create()
+	{
+	
+	}
         public function action_create(){
             
             $error_code = $this -> OK; 
