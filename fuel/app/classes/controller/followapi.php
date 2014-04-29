@@ -14,18 +14,6 @@ class Controller_Followapi extends Controller_Rest
 	const _message_not_exist_user = "Not Existed User";
 	const _message_not_exist_token = "Not Existed Token";
 	
-	//function convert array to xml
-	function write_xml( XMLWriter $xml, $data ) {
-		foreach( $data as $key => $value ) {
-			if( is_array( $value )) {
-				$xml->startElement( $key );
-				$this->write_xml( $xml, $value );
-				$xml->endElement( );
-				continue;
-			}
-			$xml->writeElement( $key, $value );
-		}
-	}
 	public function action_addfollow()
 	{
 		try{			
